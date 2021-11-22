@@ -1,5 +1,113 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1 class="text-2xl ">This is the Checkout</h1>
+<div class="grid grid-cols-6 mt-8 gap-4 px-4 w-full ">
+    <div class="container col-span-3 bg-white drop-shadow-lg p-2">
+        <form id="form">
+            <div id="user-info"
+                 class="grid grid-cols-2 px-1">
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="name"
+                           placeholder="Name...">
+                </div>
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="email"
+                           name="email"
+                           placeholder="Email...">
+                </div>
+
+            </div>
+            <br>
+            <hr class="border-gray-200 ">
+            <div class="ml-4 my-4 text-lg font-medium ">Shipping Information</div>
+            <div id="shipping-info"
+                 class="grid grid-cols-2 px-2 ">
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="address"
+                           placeholder="Address...">
+                </div>
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="city"
+                           placeholder="City...">
+                </div>
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="state"
+                           placeholder="State...">
+                </div>
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="zipcode"
+                           placeholder="zipcode...">
+                </div>
+                <div class="p-2">
+                    <input required
+                           class=" w-full"
+                           type="text"
+                           name="zipcode"
+                           placeholder="zipcode...">
+                </div>
+            </div>
+            <input type="submit"
+                   class="w-full h-8 bg-green-600 hover:bg-green-700"
+                   value="Continue">
+        </form>
+    </div>
+
+    <div class="container col-span-3 bg-white drop-shadow-lg h-auto">
+        <a class="
+          p-2
+          relative
+          top-6
+          left-2
+          ring ring-2
+          text-gray-400
+          ring-gray-400
+          hover:text-white hover:bg-gray-500 hover:ring-transparent
+        "
+           href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+        <br>
+        <br>
+        <br>
+        <hr class="border-gray-200 ">
+        <div class="m-4 font-semibold text-xl">Order Summary</div>
+        <hr class="border-gray-200 ">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+
+            <div class="col-span-1 mt-2">
+                <img class="p-2"
+                     src="{% static 'images/placeholder.png' %}" />
+            </div>
+            <div class="col-span-1 mt-2">
+                Product 1
+            </div>
+            <div class="col-span-1 mt-2">
+                $ 20.00
+            </div>
+            <div class="col-span-1 mt-2">
+                x2
+            </div>
+        </div>
+        <div class="m-4 font-medium text-lg">Items: 2</div>
+        <div class="m-4 font-medium text-lg">Total: $40.00</div>
+    </div>
+    <div class="container col-span-3 bg-white h-10 drop-shadow-lg hidden">Paypal Options</div>
+</div>
+
 
 {% endblock content %}

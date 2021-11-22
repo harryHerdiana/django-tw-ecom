@@ -1,5 +1,107 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1 class="text-4xl text-gray-300">This is the Cart</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="mt-4 grid grid-cols-4 p-4 self-center">
+  <div class="container col-span-full w-full mx-auto">
+    <div class="h-full bg-white drop-shadow-md">
+      <a
+        class="
+          p-2
+          relative
+          top-6
+          left-2
+          ring ring-2
+          text-gray-400
+          ring-gray-400
+          hover:text-white hover:bg-gray-500 hover:ring-transparent
+        "
+        href="{% url 'store' %}"
+        >&#x2190; Continue Shopping</a
+      >
+      <br />
+      <br />
+      <br />
+      <hr />
+      <table class="table-auto w-full text-lg">
+        <tr>
+          <th>
+            <h5>Items: <strong>5</strong></h5>
+          </th>
+          <th>
+            <h5>Total: <strong> $25</strong></h5>
+          </th>
+          <th>
+            <a
+              href="{% url 'checkout' %}"
+              class="
+                float-right
+                m-4
+                ring ring-2
+                text-green-400
+                bg-white
+                ring-green-400
+                hover:text-white hover:bg-green-400 hover:ring-transparent
+                p-1
+              "
+              >Checkout</a
+            >
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <br />
+  <div class="container col-span-full w-full mx-auto">
+    <div class="h-full bg-white drop-shadow-md">
+      <div
+        class="
+          items-center
+          justify-items-center
+          grid grid-cols-8
+          font-bold
+          pb-10
+          mb-10
+        "
+      >
+        <div class="col-span-2 mt-2">Image</div>
+        <div class="col-span-2 mt-2">Item</div>
+        <div class="mt-2">Price</div>
+        <div class="mt-2">Quantity</div>
+        <div class="mt-2">Total</div>
+      </div>
+      <div
+        class="
+          grid grid-cols-8
+          font-bold
+          pb-10
+          mb-10
+          items-center
+          justify-items-center
+        "
+      >
+        <div class="col-span-2 mt-2">
+          <img class="p-2" src="{% static 'images/placeholder.png' %}" />
+        </div>
+        <div class="col-span-2 mt-2">Product 1</div>
+        <div class="mt-2">$5</div>
+        <div class="mt-2 flex items-center">
+          <div>2</div>
+          <a class="inline-block">
+            <div>
+              <img
+                class="m-2 w-4 cursor-pointer block"
+                src="{% static 'images/arrow-up.png' %}"
+              />
+              <img
+                class="m-2 w-4 cursor-pointer block"
+                src="{% static 'images/arrow-down.png' %}"
+              />
+            </div>
+          </a>
+        </div>
+        <div class="mt-2">$10</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
