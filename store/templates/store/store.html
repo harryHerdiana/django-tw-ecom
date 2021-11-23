@@ -1,45 +1,30 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="grid grid-cols-3 gap-4 px-4">
-    <div>
-        <img src=" {% static 'images/placeholder.png' %}" />
-        <div class="bg-gray-100 drop-shadow-lg">
-            <h6 class="text-left my-2">Product</h6>
-            <hr class="border-gray-300 border-1" />
-            <button class="m-2 h-9 w-24 ring ring-2 ring-gray-400
-            hover:ring-transparent hover:bg-gray-400 hover:text-gray-100 ">Add
-                To Cart</button>
-            <a href="#"
-               class="m-2 p-2 ring ring-2 text-green-400 ring-green-400">View</a>
-            <h6 class="float-right text-2xl mt-2 mr-2">$20</h6>
-        </div>
+  {% for product in products %}
+  <div>
+    <div class="container"><img src="{{product.imageURL}}" class="object-contain w-full h-40" /></div>
+    <div class="bg-gray-100 drop-shadow-lg">
+      <h6 class="text-left ml-2 my-2">{{product.name}}</h6>
+      <hr class="border-gray-300 border-1" />
+      <button
+        class="
+          m-2
+          h-9
+          w-24
+          ring ring-2 ring-gray-400
+          hover:ring-transparent hover:bg-gray-400 hover:text-gray-100
+        "
+      >
+        Add To Cart
+      </button>
+      <a href="#" class="m-2 p-2 ring ring-2 text-green-400 ring-green-400"
+        >View</a
+      >
+      <h6 class="float-right text-2xl mt-2 mr-2">
+        ${{product.price | floatformat:2}}
+      </h6>
     </div>
-    <div>
-        <img src="{% static 'images/placeholder.png' %}" />
-        <div class="bg-gray-100 drop-shadow-lg">
-            <h6 class="text-left my-2">Product</h6>
-            <hr class="border-gray-300 border-1" />
-            <button class="m-2 h-9 w-24 ring ring-2 ring-gray-400
-            hover:ring-transparent hover:bg-gray-400 hover:text-gray-100 ">Add
-                To Cart</button>
-            <a href="#"
-               class="m-2 p-2 ring ring-2 text-green-400 ring-green-400">View</a>
-            <h6 class="float-right text-2xl mt-2 mr-2">$20</h6>
-        </div>
-    </div>
-    <div>
-        <img src="{% static 'images/placeholder.png' %}" />
-        <div class="bg-gray-100 drop-shadow-lg">
-            <h6 class="text-left my-2">Product</h6>
-            <hr class="border-gray-300 border-1" />
-            <button class="m-2 h-9 w-24 ring ring-2 ring-gray-400
-            hover:ring-transparent hover:bg-gray-400 hover:text-gray-100 ">Add
-                To Cart</button>
-            <a href="#"
-               class="m-2 p-2 ring ring-2 text-green-400 ring-green-400">View</a>
-            <h6 class="float-right text-2xl mt-2 mr-2">$20</h6>
-        </div>
-    </div>
+  </div>
+  {% endfor %}
 </div>
 {% endblock content %}
