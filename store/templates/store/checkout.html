@@ -24,9 +24,9 @@
             </div>
             <br>
             <hr class="border-gray-200 ">
-            <div class="ml-4 my-4 text-lg font-medium ">Shipping Information</div>
             <div id="shipping-info"
-                 class="grid grid-cols-2 px-2 ">
+            class="grid grid-cols-2 px-2 ">
+            <div class="ml-4 my-4 text-lg font-medium ">Shipping Information</div>
                 <div class="p-2">
                     <input required
                            class=" w-full"
@@ -87,27 +87,34 @@
         <hr class="border-gray-200 ">
         <div class="m-4 font-semibold text-xl">Order Summary</div>
         <hr class="border-gray-200 ">
+        {% for item in items %}
         <div class="grid grid-cols-4 justify-items-center items-center">
 
             <div class="col-span-1 mt-2">
                 <img class="p-2"
-                     src="{% static 'images/placeholder.png' %}" />
+                     src="{{item.product.imageURL}}" />
             </div>
             <div class="col-span-1 mt-2">
-                Product 1
+                {{item.product.name}}
             </div>
             <div class="col-span-1 mt-2">
-                $ 20.00
+                $ {{item.product.price | floatformat:2 }}
             </div>
             <div class="col-span-1 mt-2">
-                x2
+               x {{item.quantity}}
             </div>
         </div>
-        <div class="m-4 font-medium text-lg">Items: 2</div>
-        <div class="m-4 font-medium text-lg">Total: $40.00</div>
+        {% endfor %}
+        <div class="m-4 font-medium text-lg">Items: {{order.get_cart_items}}</div>
+        <div class="m-4 font-medium text-lg">Total: $ {{order.get_cart_total | floatformat:2}}</div>
     </div>
     <div class="container col-span-3 bg-white h-10 drop-shadow-lg hidden">Paypal Options</div>
 </div>
 
-
+<script type="text/javascript">
+    const shipping = '{{order.shipping}}'
+    if (shipping == "False"){
+        document.querySelector('#shipping-info').innerHTML = ''
+    }
+</script>
 {% endblock content %}

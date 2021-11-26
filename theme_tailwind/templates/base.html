@@ -11,6 +11,25 @@
   <meta http-equiv="X-UA-Compatible"
         content="ie=edge">
   {% tailwind_css %}
+  <script type="text/javascript">
+    var user = '{{request.user}}'
+    function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getToken('csrftoken');
+  </script>
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
@@ -50,7 +69,7 @@
                href="{% url 'cart' %}"><img class="h-8"
                    src="{% static 'images/cart.png' %}" /></a>
                    <p class="inline-block w-6 bg-red-500 h-6 text-center
-                   relative right-4 rounded-full">0</p>
+                   relative right-4 rounded-full">{{cartItems}}</p>
 
           </nav>
         </div>
@@ -60,6 +79,9 @@
 
     {% endblock content %}
   </div>
+
+  <script type="text/javascript" src="{% static 'js/cart.js' %}">
+  </script>
 </body>
 
 </html>
